@@ -1,0 +1,15 @@
+{
+  "name": "align-assignment",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^9.6.0",
+    "eslint-plugin-local-rules": "^3.0.2",
+    "mocha": "^10.6.0"
+  },
+  "scripts": {
+    "test": "mocha tests/lib/rules/align-assignments.test.js",
+    "format": "eslint --fix ."
+  }
+}
