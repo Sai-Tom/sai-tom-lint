@@ -24,12 +24,12 @@ export const ENDPOINTS = {
   posts         : '/posts',
   comments      : '/comments',
   notifications : '/notifications',
-    usersPath: {
-      get    : '/users',
-      post   : '/users',
-      put    : '/users',
-      delete : '/users'
-    }
+  usersPath     : {
+    get    : '/users',
+    post   : '/users',
+    put    : '/users',
+    delete : '/users'
+  }
 };
 
 // レート制限設定

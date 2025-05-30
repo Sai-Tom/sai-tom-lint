@@ -55,6 +55,35 @@ const obj = {
 };
       `,
     },
+    // Shorthand properties should be ignored
+    {
+      code: `
+const user = { id, name, email, role };
+      `,
+    },
+    // Mixed shorthand and regular properties
+    {
+      code: `
+const obj = {
+  id,
+  name,
+  type    : 'user',
+  status  : 'active',
+  isAdmin : false
+};
+      `,
+    },
+    // Object with only shorthand properties
+    {
+      code: `
+const clone = {
+  ...original,
+  id,
+  name,
+  email
+};
+      `,
+    },
   ],
 
   invalid: [
@@ -122,6 +151,34 @@ const config = {
   port     : 3000,
   database : 'mydb',
   ssl      : true
+};
+      `,
+      errors: [
+        {
+          message: 'Object properties are not aligned',
+        },
+      ],
+    },
+    // Mixed shorthand and regular properties - should align only regular ones
+    {
+      code: `
+const obj = {
+  id,
+  name,
+  type: 'user',
+  status: 'active',
+  isAdmin: false,
+  email
+};
+      `,
+      output: `
+const obj = {
+  id,
+  name,
+  type    : 'user',
+  status  : 'active',
+  isAdmin : false,
+  email
 };
       `,
       errors: [

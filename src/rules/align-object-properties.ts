@@ -89,11 +89,12 @@ const rule: Rule.RuleModule = {
         
         const currentLine = prop.loc.start.line;
         
-        // Skip spread elements, methods, getters/setters
+        // Skip spread elements, methods, getters/setters, and shorthand properties
         if (prop.type === 'SpreadElement' || 
             prop.method || 
             prop.kind === 'get' || 
-            prop.kind === 'set') {
+            prop.kind === 'set' ||
+            (prop.type === 'Property' && prop.shorthand)) {
           if (currentGroup.length > 0) {
             groups.push(currentGroup);
             currentGroup = [];
