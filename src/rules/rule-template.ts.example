@@ -1,0 +1,50 @@
+import { Rule } from "eslint";
+
+// ------------------------------------------------------------------------------
+// Rule Definition
+// ------------------------------------------------------------------------------
+
+interface RuleOptions {
+  // ルールのオプションをここに定義
+}
+
+const rule: Rule.RuleModule = {
+  meta: {
+    type: "layout", // "problem", "suggestion", "layout" のいずれか
+    docs: {
+      description: "ルールの説明をここに記述",
+      recommended: false,
+    },
+    fixable: "code", // 自動修正可能な場合は "code" または "whitespace"
+    schema: [
+      // オプションのスキーマを定義
+      {
+        type: "object",
+        properties: {
+          // オプションのプロパティ
+        },
+        additionalProperties: false,
+      },
+    ],
+  },
+
+  create(context: Rule.RuleContext): Rule.RuleListener {
+    const sourceCode = context.getSourceCode();
+    const options = context.options[0] || {};
+
+    return {
+      // ASTノードタイプごとの処理を定義
+      // 例: Program, VariableDeclaration, FunctionDeclaration など
+      
+      Program(node: Rule.Node) {
+        // プログラム全体の処理
+      },
+
+      // 他のノードタイプの処理...
+    };
+
+    // ヘルパー関数をここに定義
+  },
+};
+
+export = rule; 

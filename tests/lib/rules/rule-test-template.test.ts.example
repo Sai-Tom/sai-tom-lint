@@ -1,0 +1,58 @@
+import { RuleTester } from 'eslint';
+import rule from '../../../src/rules/[ルール名]';
+
+// ------------------------------------------------------------------------------
+// Tests
+// ------------------------------------------------------------------------------
+
+const ruleTester = new RuleTester({
+  languageOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+});
+
+ruleTester.run('[ルール名]', rule, {
+  valid: [
+    // 正常なケース（エラーが出ないコード）
+    {
+      code: `
+        // 正常なコード例
+      `,
+    },
+    {
+      code: `
+        // 別の正常なコード例
+      `,
+      options: [{ /* オプション */ }],
+    },
+  ],
+
+  invalid: [
+    // エラーになるケース
+    {
+      code: `
+        // エラーになるコード
+      `,
+      errors: [
+        {
+          message: 'エラーメッセージ',
+          type: 'ノードタイプ',
+        },
+      ],
+    },
+    {
+      code: `
+        // 自動修正可能なエラーコード
+      `,
+      output: `
+        // 修正後のコード
+      `,
+      errors: [
+        {
+          message: 'エラーメッセージ',
+        },
+      ],
+    },
+  ],
+}); 

@@ -1,15 +1,24 @@
 {
   "name": "align-assignment",
   "version": "1.0.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "license": "MIT",
   "devDependencies": {
+    "@types/eslint": "^8.56.5",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
     "eslint": "^9.6.0",
     "eslint-plugin-local-rules": "^3.0.2",
-    "mocha": "^10.6.0"
+    "mocha": "^10.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
   },
   "scripts": {
-    "test": "mocha tests/lib/rules/align-assignments.test.js",
+    "build": "tsc",
+    "test": "TS_NODE_PROJECT=tsconfig.test.json mocha --require ts-node/register tests/**/*.test.ts",
     "format": "eslint --fix ."
   }
 }

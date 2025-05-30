@@ -1,5 +1,5 @@
 import globals from "globals";
-import localRules from "./lib/index.js";
+import localRules from "./dist/index.js";
 
 export default [
   {

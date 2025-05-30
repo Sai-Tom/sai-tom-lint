@@ -4,22 +4,19 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib').rules['align-assignments'];
-
-
-const RuleTester = require('eslint').RuleTester;
+import { RuleTester } from 'eslint';
+import rule from '../../../src/rules/align-assignments';
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-// const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2017 } });
 const ruleTester = new RuleTester({
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'commonjs',
-    },
-  });
+  languageOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'commonjs',
+  },
+});
 
 ruleTester.run('align-assignments', rule, {
   valid: [
@@ -467,6 +464,6 @@ ruleTester.run('align-assignments', rule, {
 });
 
 
-function code(lines) {
+function code(lines: string[]): string {
   return lines.join('\n');
 }
